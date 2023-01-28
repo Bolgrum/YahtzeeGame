@@ -1,4 +1,4 @@
-## INITIAL PULL FROM GITHUB ON BRANCH PYTHON
+## INITIAL PULL FROM BRANCH PYTHON ON GITHUB
 Make sure that you have in your settings.json file the following code.
 ```
 {

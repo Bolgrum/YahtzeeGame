@@ -1,5 +1,3 @@
-import os
-
 def print_project_header(app_info: dict, border="="*50, intro_message="Help Message Goes Here", ):
     # Prints the box containing information about the application
     print(border)    

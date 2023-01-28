@@ -1,4 +1,4 @@
-from yahtzee.console import input, errors
+from yahtzee.console import input
 
 # Test Script
 some_string = input.user_input()

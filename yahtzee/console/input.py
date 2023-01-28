@@ -1,4 +1,3 @@
-
 from . import errors
 
 # FUNCTIONS DEFINITIONS

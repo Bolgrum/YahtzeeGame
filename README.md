@@ -1,4 +1,4 @@
-## INITIAL PULL FROM BRANCH PYTHON ON GITHUP
+## AFTER INITIAL PULL FROM BRANCH PYTHON ON GITHUP
 Make sure that the following code is located in the settings.json file.
 ```
 {

@@ -1,4 +1,4 @@
-## INITIAL PULL FROM BRANCH PYTHON ON GITHUB
+## INITIAL PULL FROM GITHUB ON BRANCH PYTHON
 Make sure that you have in your settings.json file the following code.
 ```
 {
@@ -7,8 +7,7 @@ Make sure that you have in your settings.json file the following code.
       }
 }
 ```
-this code will set the root pythonpath path as your root folder for the project. This will allow you use the other modules within the project, for example.
-if you are in ../tests the following code is possible with the above setup.
+This code will tell the python interpreter to also look at pythonpath(project_root) for additional modules. This will allow you use the other modules within the project. For example, the following code becomes possible.
 ```
 #..\tests\test_path.py
 

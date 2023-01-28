@@ -1,19 +1,10 @@
-import os
 import sys
 import unittest
 from yahtzee import output
 
-def print_project_path_info():
-    print("In module products __package__, __name__ ==", __package__, __name__)
-    print_pythonpath()
-
 def print_pythonpath():
     for path in sys.path:
         print(path)
-
-class TestPaths(unittest.TestCase):
-    def test_paths(self):
-        pass
 
 # Test Script
 project_paths: dict = output.set_project_paths()

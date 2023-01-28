@@ -1,6 +1,3 @@
-# YahtzeeGame
-This repository is for Anthony, Spencer, and Trevin to make their Yahtzee game for Software Engineering.
-
 ## INITIAL PULL FROM GITHUB ON BRANCH PYTHON
 Make sure that you have in your settings.json file the following code.
 ```

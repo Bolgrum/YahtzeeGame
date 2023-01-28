@@ -19,5 +19,5 @@ from yahtzee import output
 ```
 However, if you do not set up settings.json the above code will give you the following error
 ```
-Error: Module "yahtzee" not found.
+ModuleNotFoundError: No module named 'yahtzee'.
 ```

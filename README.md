@@ -1,5 +1,5 @@
 ## INITIAL PULL FROM BRANCH PYTHON ON GITHUP
-Make sure that you have in your settings.json file the following code.
+Make sure that the following code is located in the settings.json file.
 ```
 {
     "terminal.integrated.env.windows": {

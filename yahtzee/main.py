@@ -1,5 +1,4 @@
 # Std lib
-import os
 import sys
 
 # Custom libs

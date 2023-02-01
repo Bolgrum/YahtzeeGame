@@ -16,7 +16,7 @@ WINDOW_HEIGHT: int        = 800
 FPS = 60
 
 # GLOBAL VARIABLES
-app = {
+app: dict = {
     'name':'SE Yahtzee',
     'author':["Anthony", "Spencer", "Trevin"],
     'license':'MIT',

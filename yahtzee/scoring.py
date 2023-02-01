@@ -53,14 +53,12 @@ def check_three_of_kind(dice):
     return score
 
 # Check for four of a kind (score = 40)
-def check_four_of_kind(dice):
-    score = 0
+def check_four_of_kind(self, dice):
 
     # Check for two options
     if dice[0] == dice[3] or dice[1] == dice[4]:
-        score = 40
-
-    return score
+        return True
+    return False
 
 # Check for five of a kind (score = 50)
 def check_five_of_kind(dice):
@@ -95,4 +93,4 @@ def check_straight(dice):
         if dice[2] + 1 == dice[3] and dice[3] + 1 == dice[4]:
             score = 45
 
-    return score
+    return score  

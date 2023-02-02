@@ -1,7 +1,7 @@
 from yahtzee import generator
-from yahtzee.scoring import CheckDice
- 
+from yahtzee.scoring.check_dice import CheckDice
 
+# Test Functions
 def brute_force_checks():
     
     print("Yahtzee Tests")
@@ -48,9 +48,7 @@ def brute_force_checks():
     print(f"Full House? {CheckDice.check_full_house([2,6,6,6,6])}")
     print(f"Full House? {CheckDice.check_full_house([2,2,2,2,6])}")
 
-def test_dice_checks():
-    check_dice = CheckDice()
-    
+def test_dice_checks():    
     for roll in range(1,10):
         random_dice_roll = generator.generate_dice_roll(5)
         if roll == 1:
@@ -58,12 +56,12 @@ def test_dice_checks():
             
         print(f"Round {roll}")
         print('=' * 50)
-        print(f"Three of a Kind? Roll {random_dice_roll} = {check_dice.check_three_of_kind(random_dice_roll)}")
-        print(f"Four of a Kind?  Roll {random_dice_roll} = {check_dice.check_four_of_kind(random_dice_roll)}")
-        print(f"Large_Straight?  Roll {random_dice_roll} = {check_dice.check_large_straight(random_dice_roll)}")
-        print(f"Small_Straight?  Roll {random_dice_roll} = {check_dice.check_small_straight(random_dice_roll)}")
-        print(f"Full House?      Roll {random_dice_roll} = {check_dice.check_full_house(random_dice_roll)}")
-        print(f"Yahtzee?         Roll {random_dice_roll} = {check_dice.check_yahtzee(random_dice_roll)}")
+        print(f"Three of a Kind? Roll {random_dice_roll} = {CheckDice.check_three_of_kind(random_dice_roll)}")
+        print(f"Four of a Kind?  Roll {random_dice_roll} = {CheckDice.check_four_of_kind(random_dice_roll)}")
+        print(f"Large_Straight?  Roll {random_dice_roll} = {CheckDice.check_large_straight(random_dice_roll)}")
+        print(f"Small_Straight?  Roll {random_dice_roll} = {CheckDice.check_small_straight(random_dice_roll)}")
+        print(f"Full House?      Roll {random_dice_roll} = {CheckDice.check_full_house(random_dice_roll)}")
+        print(f"Yahtzee?         Roll {random_dice_roll} = {CheckDice.check_yahtzee(random_dice_roll)}")
         print('=' * 50, "\n")
         
 # Test Script

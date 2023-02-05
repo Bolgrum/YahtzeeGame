@@ -29,3 +29,13 @@ def find_high_score(values):
         high_score = score
 
     return high_score
+
+# Add all occurences of goal value
+def score_singles(dice, goal):
+    score = 0
+
+    for i in range(len(dice)):
+        if dice[i] == goal:
+            score += goal
+
+    return score

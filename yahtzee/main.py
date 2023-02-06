@@ -11,4 +11,5 @@ if __name__ == "__main__":
         if sys.argv[1].lower() == "console":
             yahtzee.run_console()
     else:
+        #yahtzee.run_gui()
         yahtzee.run_gui()

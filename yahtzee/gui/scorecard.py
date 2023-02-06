@@ -1,18 +1,103 @@
 import pygame
+from gui import button
 
-# Global Classes
 class Scorecard:
-    def __init__(self, x_pos, y_pos, text, select, possible, done):
-        self.x_pos = x_pos
-        self.y_pos = y_pos
+    def __init__(self, colors: dict, font: dict):
+        self.colors = colors
+        self.font = font
+        
+        # Init Scorecard
+        self.ones           = Scoreslot(0, 200, '1s', False, False)
+        self.twos           = Scoreslot(0, 230, '2s', False, False)
+        self.threes         = Scoreslot(0, 260, '3s', False, False)
+        self.fours          = Scoreslot(0, 290, '4s', False, False)
+        self.fives          = Scoreslot(0, 320, '5s', False, False)
+        self.sixes          = Scoreslot(0, 350, '6s', False, False)
+        self.upper_total_1  = Scoreslot(0, 380, 'Upper Score',False, True)
+        self.upper_bonus    = Scoreslot(0, 410, 'Bonus if >= 63',False, True)
+        self.upper_total_2  = Scoreslot(0, 440, 'Total Upper Score',False, True)
+        self.three_kind     = Scoreslot(0, 470, '3 of a Kind', False, False)
+        self.four_kind      = Scoreslot(0, 500, '4 of a Kind', False, False)
+        self.full_house     = Scoreslot(0, 530, 'Full House', False, False)
+        self.small_straight = Scoreslot(0, 560, 'Small Straight', False, False)
+        self.large_straight = Scoreslot(0, 590, 'Large Straight', False, False)
+        self.yahtzee        = Scoreslot(0, 620, 'YAHTZEE!', False, False)
+        self.chance         = Scoreslot(0, 650, 'Chance', False, False)
+        self.bonus          = Scoreslot(0, 680, 'Lower Bonus', False, False)
+        self.lower_total_1  = Scoreslot(0, 710, 'Upper Score', False, True)
+        self.lower_total_2  = Scoreslot(0, 740, 'Upper Total', False, True)
+        self.grand_total    = Scoreslot(0, 770, 'Grand Total', False, True)
+        
+        self.OnesButton          = button.Button(self.colors.get("black"), 165, 200, 60, 30, "Ones")
+        self.TwosButton          = button.Button(self.colors.get("black"), 165, 230, 60, 30, "Twos")
+        self.ThreesButton        = button.Button(self.colors.get("black"), 165, 260, 60, 30, "Threes")
+        self.FoursButton         = button.Button(self.colors.get("black"), 165, 290, 60, 30, "Fours")
+        self.FivesButton         = button.Button(self.colors.get("black"), 165, 320, 60, 30, "Fives")
+        self.SixesButton         = button.Button(self.colors.get("black"), 165, 350, 60, 30, "Sixes")
+        self.ThreeKindButton     = button.Button(self.colors.get("black"), 165, 470, 60, 30, "3K")
+        self.FourKindButton      = button.Button(self.colors.get("black"), 165, 500, 60, 30, "4k")
+        self.FullHouseButton     = button.Button(self.colors.get("black"), 165, 530, 60, 30, "FH")
+        self.SmallStraightButton = button.Button(self.colors.get("black"), 165, 560, 60, 30, "SS")        
+        self.LargeStraightButton = button.Button(self.colors.get("black"), 165, 590, 60, 30, "LS")        
+        self.YahtzeeButton       = button.Button(self.colors.get("black"), 165, 620, 60, 30, "Yahtzee")
+        self.ChanceButton        = button.Button(self.colors.get("black"), 165, 650, 60, 30, "Chance") 
+        
+    def draw_scorecard(self, window, width: int, height: int):
+        # draw verticle lines
+        pygame.draw.rect(window, self.colors.get("white"), [0, 200, 225, height - 200])
+        pygame.draw.line(window, self.colors.get("black"), (0, 200), (width, 200), 3)
+        pygame.draw.line(window, self.colors.get("black"), (165, 200), (165, height), 3)
+        pygame.draw.line(window, self.colors.get("black"), (225, 200), (225, height), 3)        
+        
+        # draw scorecard
+        self.ones.draw(window, self.colors, self.font)
+        self.twos.draw(window, self.colors, self.font)
+        self.threes.draw(window, self.colors, self.font)
+        self.fours.draw(window, self.colors, self.font)
+        self.fives.draw(window, self.colors, self.font)
+        self.sixes.draw(window, self.colors, self.font)
+        self.upper_total_1.draw(window, self.colors, self.font)
+        self.upper_bonus.draw(window, self.colors, self.font)
+        self.upper_total_2.draw(window, self.colors, self.font)
+        self.three_kind.draw(window, self.colors, self.font)
+        self.four_kind.draw(window, self.colors, self.font)
+        self.full_house.draw(window, self.colors, self.font)
+        self.small_straight.draw(window, self.colors, self.font)
+        self.large_straight.draw(window, self.colors, self.font)
+        self.yahtzee.draw(window, self.colors, self.font)
+        self.chance.draw(window, self.colors, self.font)
+        self.bonus.draw(window, self.colors, self.font)
+        self.lower_total_1.draw(window, self.colors, self.font)
+        self.lower_total_2.draw(window, self.colors, self.font)
+        self.grand_total.draw(window, self.colors, self.font)
+        
+        # draw scorecard buttons
+        self.OnesButton.draw(window)
+        self.TwosButton.draw(window)
+        self.ThreesButton.draw(window)
+        self.FoursButton.draw(window)
+        self.FivesButton.draw(window)
+        self.SixesButton.draw(window)
+        self.ThreeKindButton.draw(window)
+        self.FourKindButton.draw(window)
+        self.FullHouseButton.draw(window)
+        self.SmallStraightButton.draw(window)
+        self.LargeStraightButton.draw(window)
+        self.YahtzeeButton.draw(window)
+        self.ChanceButton.draw(window)     
+    
+class Scoreslot:
+    def __init__(self, x: int, y: int,text: str, possible: bool, done: bool) -> None:
+
+        self.x_pos = x
+        self.y_pos = y
         self.text = text
-        self.select = select
         self.possible = possible
         self.done = done
-
-    def draw(self, screen, screen_colors: dict, font):
-        pygame.draw.line(screen, screen_colors.get("black"), (self.x_pos, self.y_pos), (self.x_pos + 225, self.y_pos), 2)
-        pygame.draw.line(screen, screen_colors.get("black"), (self.x_pos, self.y_pos + 30), (self.x_pos + 225, self.y_pos + 30), 2)
+         
+    def draw(self, window, colors: dict, font: dict):
+        pygame.draw.line(window, colors.get('black'), (self.x_pos, self.y_pos), (self.x_pos + 225, self.y_pos), 2)
+        pygame.draw.line(window, colors.get('black'), (self.x_pos, self.y_pos + 30), (self.x_pos + 225, self.y_pos + 30), 2)
         
         if not self.done:
             if self.possible:
@@ -21,51 +106,5 @@ class Scorecard:
                 text = font.render(self.text, True, (255, 0, 0))
         else:
             text = font.render(self.text, True, (0, 0, 0))
-
-        screen.blit(text, (self.x_pos + 5, self.y_pos + 10))
-
-# Global Functions
-def draw_scoreboard(screen, screen_colors, font) -> None:
-    # Init Scorboard
-    ones = Scorecard(0, 200, '1s', True, False, False)
-    twos = Scorecard(0, 230, '2s', True, False, False)
-    threes = Scorecard(0, 260, '3s', True, False, False)
-    fours = Scorecard(0, 290, '4s', True, False, False)
-    fives = Scorecard(0, 320, '5s', True, False, False)
-    sixes = Scorecard(0, 350, '6s', True, False, False)
-    upper_total_1 = Scorecard(0, 380, 'Upper Score', False, False, True)
-    upper_bonus = Scorecard(0, 410, 'Bonus if >= 63', False, False, True)
-    upper_total_2 = Scorecard(0, 440, 'Total Upper Score', False, False, True)
-    three_kind = Scorecard(0, 470, '3 of a Kind', True, False, False)
-    four_kind = Scorecard(0, 500, '4 of a Kind', True, False, False)
-    full_house = Scorecard(0, 530, 'Full House', True, False, False)
-    small_straight = Scorecard(0, 560, 'Small Straight', True, False, False)
-    large_straight = Scorecard(0, 590, 'Large Straight', True, False, False)
-    yahtzee = Scorecard(0, 620, 'YAHTZEE!', True, False, False)
-    chance = Scorecard(0, 650, 'Chance', True, False, False)
-    bonus = Scorecard(0, 680, 'Chance', True, False, False)
-    lower_total_1 = Scorecard(0, 710, 'Upper Score', False, False, True)
-    lower_total_2 = Scorecard(0, 740, 'Upper Total', False, False, True)
-    grand_total = Scorecard(0, 770, 'Grand Total', False, False, True)
-    
-    # draw scorecard
-    ones.draw(screen, screen_colors, font)
-    twos.draw(screen, screen_colors, font)
-    threes.draw(screen, screen_colors, font)
-    fours.draw(screen, screen_colors, font)
-    fives.draw(screen, screen_colors, font)
-    sixes.draw(screen, screen_colors, font)
-    upper_total_1.draw(screen, screen_colors, font)
-    upper_bonus.draw(screen, screen_colors, font)
-    upper_total_2.draw(screen, screen_colors, font)
-    three_kind.draw(screen, screen_colors, font)
-    four_kind.draw(screen, screen_colors, font)
-    full_house.draw(screen, screen_colors, font)
-    small_straight.draw(screen, screen_colors, font)
-    large_straight.draw(screen, screen_colors, font)
-    yahtzee.draw(screen, screen_colors, font)
-    chance.draw(screen, screen_colors, font)
-    bonus.draw(screen, screen_colors, font)
-    lower_total_1.draw(screen, screen_colors, font)
-    lower_total_2.draw(screen, screen_colors, font)
-    grand_total.draw(screen, screen_colors, font)
+            
+        window.blit(text, (self.x_pos + 5, self.y_pos + 10))        

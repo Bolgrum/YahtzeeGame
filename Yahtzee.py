@@ -1,6 +1,10 @@
 import random
 import pygame
 
+#fixes potential resolution issue
+import ctypes
+ctypes.windll.user32.SetProcessDPIAware()
+
 pygame.init()
 
 WIDTH = 600
@@ -159,7 +163,7 @@ class Choice:
     def draw(self):
         pygame.draw.line(screen, BLACK, (self.x_pos, self.y_pos), (self.x_pos + 225, self.y_pos), 2)
         pygame.draw.line(screen, BLACK, (self.x_pos, self.y_pos + 30), (self.x_pos + 225, self.y_pos + 30), 2)
-        
+
         if not self.done:
             if self.possible:
                 text = font.render(self.text, True, (34, 140, 34))
@@ -353,7 +357,7 @@ while running:
     lower_total_1.draw()
     lower_total_2.draw()
     grand_total.draw()
-    
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

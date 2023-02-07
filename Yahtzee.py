@@ -28,6 +28,7 @@ current_score = 0
 something_selected = False
 bonus_time = False
 running = True
+turn_tracker = 0
 game_over = False
 
 def check_scores(choice_list, numbers_list, possible_list, current_score):
@@ -81,7 +82,7 @@ def draw_stuff():
     global game_over
     if game_over:
         over_text = font.render('Game Over: Click to Restart', True, WHITE)
-        screen.blit(over_text, (280, 290))
+        screen.blit(over_text, (295, 280))
     roll_text = font.render('Click to Roll', True, WHITE)
     screen.blit(roll_text, (100, 167))
     accept_text = font.render('Accept Turn', True, WHITE)
@@ -137,11 +138,12 @@ class Dice:
             pygame.draw.rect(screen, (255, 0, 0), [self.x_pos, self.y_pos, 100, 100], 4, 5)
 
     def check_click(self, coordinates):
-        if self.die.collidepoint(coordinates):
-            if dice_selected[self.key]:
-                dice_selected[self.key] = False
-            elif not dice_selected[self.key]:
-                dice_selected[self.key] = True
+        if rolls_left < 3:
+            if self.die.collidepoint(coordinates):
+                if dice_selected[self.key]:
+                    dice_selected[self.key] = False
+                elif not dice_selected[self.key]:
+                    dice_selected[self.key] = True
 
 class Choice:
     def __init__(self, x_pos, y_pos, text, select, possible, done, score):
@@ -408,6 +410,9 @@ while running:
                     numbers = [7, 18, 9, 16, 11]
                     something_selected = False
                     rolls_left = 3
+                turn_tracker += 1
+                if turn_tracker == 13:
+                    game_over = True
 
     if roll:
         for number in range(len(numbers)):
